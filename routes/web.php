@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Package\PackageController;
+use App\Http\Controllers\Package\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,9 @@ Auth::routes(['auth', 'verify' => true]);
 
 Route::middleware('auth', 'verified')->group(function () {
     // Home
-    Route::get('/home', [App\Http\Controllers\Home\HomeController::class, 'index'])->name('home.index');
+    Route::get('home', [App\Http\Controllers\Home\HomeController::class, 'index'])->name('home.index');
+
+    // Package
+    Route::resource('package', PackageController::class)->only('store');
 });
 

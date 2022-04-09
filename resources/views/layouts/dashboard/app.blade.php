@@ -45,11 +45,7 @@
     <!-- Header -->
     <div class="header bg-primary pb-6">
       <div class="container-fluid">
-        @if(request()->routeIs('home.index'))
-          @include('layouts.dashboard.header')
-        @else
-          @yield('header')
-        @endif
+        @yield('header')
       </div>
     </div>
     <!-- Page content -->
