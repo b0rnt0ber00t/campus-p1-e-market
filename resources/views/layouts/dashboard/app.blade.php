@@ -1,17 +1,18 @@
-<!-- =========================================================
-* Argon Dashboard PRO v1.1.0
-=========================================================
+<!--
+  =========================================================
+  * Argon Dashboard PRO v1.1.0
+  =========================================================
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-pro
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+  * Product Page: https://www.creative-tim.com/product/argon-dashboard-pro
+  * Copyright 2019 Creative Tim (https://www.creative-tim.com)
 
-* Coded by Creative Tim
+  * Coded by Creative Tim
 
-=========================================================
+  =========================================================
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- -->
- <!DOCTYPE html>
+  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -42,7 +43,15 @@
     @include('layouts.dashboard.topnav')
     <!-- Header -->
     <!-- Header -->
-    @include('layouts.dashboard.header')
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        @if(request()->routeIs('home.index'))
+          @include('layouts.dashboard.header')
+        @else
+          @yield('header')
+        @endif
+      </div>
+    </div>
     <!-- Page content -->
     <div class="container-fluid mt--6">
       @yield('content')
@@ -57,6 +66,7 @@
   <script src="{{ asset('assets/vendor/js-cookie/js.cookie.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/@fortawesome/fontawesome-free/js/all.min.js') }}"></script>
   <!-- Optional JS -->
   @stack('scripts')
   <!-- Argon JS -->

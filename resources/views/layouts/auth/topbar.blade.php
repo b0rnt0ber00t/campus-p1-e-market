@@ -1,7 +1,8 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="{{ url('/') }}">
-      <img src="{{ asset('assets/img/brand/light.png') }}">
+      <!-- <img src="{{ asset('assets/img/brand/light.png') }}"> -->
+      <span class="h1 text-white"><span class="font-weight-bolder text-danger">E</span>-MARKET</span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,7 +12,8 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="{{ url('/') }}">
-              <img src="{{ asset('assets/img/brand/dark.png') }}">
+              <!-- <img src="{{ asset('assets/img/brand/dark.png') }}"> -->
+              <span class="h1 text-primary"><span class="font-weight-bolder text-danger shadow">E</span>-MARKET</span>
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -24,7 +26,7 @@
       </div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a href="{{ route('home') }}" class="nav-link">
+          <a href="{{ route('home.index') }}" class="nav-link">
             <span class="nav-link-inner--text">Dashboard</span>
           </a>
         </li>
