@@ -2,22 +2,15 @@
 
 namespace App\Models;
 
-use App\Helpers\Relationships;
-use App\Models\Order\Transaction;
-use App\Models\Package\Package;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    // Helper
-    use Relationships\SaldoHelperRelationship,
-        Relationships\PackageHelperRelationship;
 
     /**
      * The attributes that are mass assignable.
@@ -48,14 +41,4 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function orders()
-    {
-        return $this->hasMany(Transaction::class);
-    }
-
-    public function packages()
-    {
-        return $this->hasMany(Package::class);
-    }
 }

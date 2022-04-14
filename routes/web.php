@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Package\PackageController;
-use App\Http\Controllers\Package\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +17,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['auth', 'verify' => true]);
-
-Route::middleware('auth', 'verified')->group(function () {
-    // Home
-    Route::get('home', [App\Http\Controllers\Home\HomeController::class, 'index'])->name('home.index');
-
-    // Package
-    Route::resource('package', PackageController::class)->only('store');
+Route::get('/talent', function () {
+    return view('talent');
 });
+
+Route::get('/detail-talent', function () {
+    return view('detail-talent');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
