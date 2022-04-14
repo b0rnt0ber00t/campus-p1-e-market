@@ -54,7 +54,9 @@
     </div>
 
   </div>
+
   @include('layouts.dashboard.components.response-message')
+
   <!-- Card stats -->
   <div class="row">
     <div class="col-xl-3 col-md-6">
@@ -64,7 +66,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Order</h5>
-              <span class="h2 font-weight-bold mb-0">345678</span>
+              <span class="h2 font-weight-bold mb-0">{{ $order->count() }}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -100,7 +102,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Purchase</h5>
-              <span class="h2 font-weight-bold mb-0">924</span>
+              <span class="h2 font-weight-bold mb-0">{{ $user->orders->count() }}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">

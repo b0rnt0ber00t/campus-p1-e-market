@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('home.index', compact('user'));
+        $order = Transaction::where('package_owner_id', $user->id);
+        return view('home.index', compact('user', 'order'));
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Package::class);
+            $table->unsignedBigInteger('package_owner_id');
             $table->timestamps();
         });
     }

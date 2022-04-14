@@ -28,4 +28,3 @@ Route::middleware('auth', 'verified')->group(function () {
     // Package
     Route::resource('package', PackageController::class)->only('store');
 });
-
