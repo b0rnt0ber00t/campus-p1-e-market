@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Home')
+@section('title', 'Dashboard')
 
 @section('header')
 <div class="header-body">
