@@ -66,7 +66,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Order</h5>
-              <span class="h2 font-weight-bold mb-0">{{ $order->count() }}</span>
+              <span class="h2 font-weight-bold mb-0">{{ $orders->count() }}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -120,7 +120,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Package</h5>
-              <span class="h2 font-weight-bold mb-0">{{ $user->package->count() }}</span>
+              <span class="h2 font-weight-bold mb-0">{{ $user->packages->count() }}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -136,4 +136,60 @@
 @endsection
 
 @section('content')
+<div class="row">
+  <div class="col-lg-8">
+    @forelse ($user->packages as $package)
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="card-title">{{ $package->name }}</div>
+          </div>
+          <div class="col-lg-3">
+            <div class="text-right">${{ $package->price }}</div>
+          </div>
+        </div>
+        <textarea cols="30" disabled class="form-control">{{ $package->description }}</textarea>
+      </div>
+    </div>
+    @empty
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">No Package</div>
+      </div>
+    </div>
+    @endforelse
+  </div>
+  <div class="col-lg">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Package</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @forelse ($orders as $order)
+            <tr>
+              <th scope="row">{{ $loop->iteration }}</th>
+              <td>{{ $order->user->name }}</td>
+              <td>{{ $order->package->name }}</td>
+              <td>#</td>
+            </tr>
+            @empty
+            <tr>
+              <th scope="row" colspan="4" class="text-center">No Orders</th>
+            </tr>
+            @endforelse
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

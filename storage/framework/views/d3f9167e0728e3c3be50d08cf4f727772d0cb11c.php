@@ -24,10 +24,17 @@
         <ul class="navbar-nav">
 
           <!-- Dashboard -->
-          <li class="nav-item<?php echo e(request()->routeIs('home.index') ? ' active' : ''); ?>">
+          <li class="nav-item<?php echo e(request()->routeIs('home.*') ? ' active' : ''); ?>">
             <a class="nav-link" href="<?php echo e(route('home.index')); ?>">
-              <i class="ni ni-shop text-primary"></i>
+              <i class="fas fa-tachometer-alt text-primary mr-3"></i>
               <span class="nav-link-text">Dashboards</span>
+            </a>
+          </li>
+
+          <li class="nav-item<?php echo e(request()->routeIs('order.*') ? ' active' : ''); ?>">
+            <a class="nav-link" href="<?php echo e(route('order.index')); ?>">
+              <i class="fas fa-shopping-cart mr-3 text-primary"></i>
+              <span class="nav-link-text">Shop</span>
             </a>
           </li>
 

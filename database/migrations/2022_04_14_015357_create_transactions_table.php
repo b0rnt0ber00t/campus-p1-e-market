@@ -16,7 +16,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Package::class);
             $table->unsignedBigInteger('package_owner_id');

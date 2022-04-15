@@ -11,7 +11,9 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'package_id', 'package_owner_id'];
+    protected $fillable = ['id', 'user_id', 'package_id', 'package_owner_id'];
+
+    protected $hidden = ['id'];
 
     public function user()
     {

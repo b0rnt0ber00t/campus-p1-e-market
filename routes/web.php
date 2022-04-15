@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Package\PackageController;
 use App\Http\Controllers\Package\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::view('/', 'welcome');
+Route::redirect('/', '/login');
+
+// Route::view('talent', 'talent');
+// Route::view('detail-talent', 'detail-talent');
+// Route::view('cart', 'cart');
 
 Auth::routes(['auth', 'verify' => true]);
 
@@ -27,4 +31,8 @@ Route::middleware('auth', 'verified')->group(function () {
 
     // Package
     Route::resource('package', PackageController::class)->only('store');
+
+    // Order
+    Route::resource('order', OrderController::class)->only('index');
+    Route::post('order/{package}', [OrderController::class, 'store'])->name('order.store');
 });

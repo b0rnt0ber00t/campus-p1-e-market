@@ -64,7 +64,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Order</h5>
-              <span class="h2 font-weight-bold mb-0"><?php echo e($order->count()); ?></span>
+              <span class="h2 font-weight-bold mb-0"><?php echo e($orders->count()); ?></span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -118,7 +118,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Package</h5>
-              <span class="h2 font-weight-bold mb-0"><?php echo e($user->package->count()); ?></span>
+              <span class="h2 font-weight-bold mb-0"><?php echo e($user->packages->count()); ?></span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -134,5 +134,61 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+<div class="row">
+  <div class="col-lg-8">
+    <?php $__empty_1 = true; $__currentLoopData = $user->packages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="card-title"><?php echo e($package->name); ?></div>
+          </div>
+          <div class="col-lg-3">
+            <div class="text-right">$<?php echo e($package->price); ?></div>
+          </div>
+        </div>
+        <textarea cols="30" disabled class="form-control"><?php echo e($package->description); ?></textarea>
+      </div>
+    </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">No Package</div>
+      </div>
+    </div>
+    <?php endif; ?>
+  </div>
+  <div class="col-lg">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Package</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $__empty_1 = true; $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <tr>
+              <th scope="row"><?php echo e($loop->iteration); ?></th>
+              <td><?php echo e($order->user->name); ?></td>
+              <td><?php echo e($order->package->name); ?></td>
+              <td>#</td>
+            </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+            <tr>
+              <th scope="row" colspan="4" class="text-center">No Orders</th>
+            </tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.dashboard.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /media/campus/campus-p1-e-market/resources/views/home/index.blade.php ENDPATH**/ ?>

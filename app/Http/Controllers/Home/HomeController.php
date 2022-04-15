@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $order = Transaction::where('package_owner_id', $user->id);
-        return view('home.index', compact('user', 'order'));
+        $orders = Transaction::where('package_owner_id', $user->id)->get();
+        return view('home.index', compact('user', 'orders'));
     }
 }
